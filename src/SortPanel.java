@@ -128,20 +128,30 @@ public class SortPanel extends JPanel implements AlgorithmDelegate
                 int N = array.length;
 
                 //TODO: Enter your code here!
+                int bottomMargin = 10;
+                int leftMargin = 10;
+                g.setColor(Color.PINK);
+                double height_factor = (1.0*getHeight()-bottomMargin)/(4*N);
+                double width = (1.0*getWidth()-leftMargin)/N;
                 for (int i=0; i<N; i++)
                 {
-                    g.setColor(Color.pink);
-                    if (N > getWidth())
+                    if (width > 1)
                     {
-                        g.drawLine((i*getWidth())/N, getHeight(), (i*getWidth())/N, getHeight()/(4*N)*array[i]);  ;
+                        g.fillRect((int)(leftMargin+i*width),
+                                (int)(height_factor*(4*N-array[i])),
+                                (int)(width+1),
+                                (int)(height_factor*array[i]));
                     }
-                    else {
-                    g.fillRect((i*getWidth())/N,
-                            (int)(getHeight()-(1.0*getHeight())/(4*N)*array[i]),
-                            (int)(getWidth()/(N*1.0)),
-                            (int)(1.0 *getHeight()/(4*N)*array[i]));
+                    else
+                    {
+                        g.drawLine((int)(leftMargin+i*width),
+                                (int)(height_factor*(4*N-array[i])),
+                                (int)(leftMargin+i*width),
+                                (int)(getHeight()-bottomMargin));
                     }
                 }
+                g.drawLine(leftMargin,0,leftMargin,getHeight()-bottomMargin);
+                g.drawLine(leftMargin,getHeight()-bottomMargin,getWidth(),getHeight()-bottomMargin);
 
 
 

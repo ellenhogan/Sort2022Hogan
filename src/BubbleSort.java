@@ -22,7 +22,7 @@ public class BubbleSort extends SortAlgorithm
                     return;
                 // -------------------------------------------------------------
             }
-            tellDelegateSortIsComplete();
+
         }
 
 
@@ -30,7 +30,7 @@ public class BubbleSort extends SortAlgorithm
 
 
 
-
+        tellDelegateSortIsComplete();
     }
     public void swap(int i, int j)
     {
@@ -38,4 +38,5 @@ public class BubbleSort extends SortAlgorithm
         array[i] = array [j];
         array[j] = temp;
     }
+
 }

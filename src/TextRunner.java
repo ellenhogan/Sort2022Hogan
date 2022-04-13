@@ -117,9 +117,14 @@ public class TextRunner implements AlgorithmDelegate
         System.out.print(currentN+"\t"+secondsExpired);
         for (int i=1; i<currentN; i++)
         {
-            if (array[i]<=array[i-1])
+            if (array[i]<array[i-1])
             {
                 System.out.print("\tERROR-not sorted.");
+                for (int j:array)
+                {
+                    System.out.print(j+" ");
+                }
+                System.out.println("");
                 break;
             }
         }
