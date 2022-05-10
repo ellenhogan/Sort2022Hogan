@@ -8,6 +8,7 @@ public class QuickSort extends SortAlgorithm
    public void run()
    {
        quickSort(array, 0, array.length-1);
+       tellDelegateSortIsComplete();
    }
 
          void swap(int[] arr, int i, int j)
@@ -30,8 +31,13 @@ public class QuickSort extends SortAlgorithm
                     swap(arr, i, j);
                 }
 
+                delegate.visualizeData(array);
+                if (!keepRunning)
+                    return -1;
+
             }
             swap(arr, i + 1, high);
+
 
             return (i + 1);
         }
@@ -42,22 +48,18 @@ public class QuickSort extends SortAlgorithm
         {
 
             int pi = partition(arr, low, high);
+            // -------------------------------------------------------------
+            // include this in the middle of your algorithm to happen OFTEN.
+            delegate.visualizeData(array);
+            if (!keepRunning)
+                return;
+            // -------------------------------------------------------------
             quickSort(arr, low, pi - 1);
-            // -------------------------------------------------------------
-            // include this in the middle of your algorithm to happen OFTEN.
-            delegate.visualizeData(array);
-            if (!keepRunning)
-                return;
-            // -------------------------------------------------------------
+
             quickSort(arr, pi + 1, high);
-            // -------------------------------------------------------------
-            // include this in the middle of your algorithm to happen OFTEN.
-            delegate.visualizeData(array);
-            if (!keepRunning)
-                return;
-            // -------------------------------------------------------------
+
         }
-      tellDelegateSortIsComplete();
+
     }
 
 }

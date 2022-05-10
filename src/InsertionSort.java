@@ -2,6 +2,7 @@ public class InsertionSort extends SortAlgorithm{
     public InsertionSort(AlgorithmDelegate del, int[] array)
     {
         super(del,array);
+
     }
     public void run()
     {
@@ -12,6 +13,9 @@ public class InsertionSort extends SortAlgorithm{
                 while (j >= 0 && array[j] > key) {
                     array[j + 1] = array[j];
                     j = j - 1;
+                    delegate.visualizeData(array);
+                    if (!keepRunning)
+                        return;
                 }
                 array[j + 1] = key;
                 // -------------------------------------------------------------
